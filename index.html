@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Webpage</title>
+</head>
+<body>
+  <h1>Welcome to my webpage!</h1>
+  <p>Please enter your name:</p>
+  <form onsubmit="showName(); return false;">
+    <input type="text" id="name" />
+    <br />
+    <label for="color">Please select a color for your name:</label>
+    <br />
+    <input type="color" id="color" />
+    <br />
+    <input type="submit" value="Submit" />
+  </form>
+  <script>
+    function showName() {
+      // Get the value of the input field
+      var name = document.getElementById("name").value;
+      // Get the value of the color picker
+      var color = document.getElementById("color").value;
+      // Create a new HTML document with the user's name in an h1 heading, styled with the chosen color and a border
+      var newDoc = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>${name}'s Page</title>
+        </head>
+        <body>
+          <h1 style="color: ${color}; border: 4px solid black;">Welcome to ${name}'s page!</h1>
+        </body>
+        </html>
+      `;
+      // Open the new HTML document in a new window
+      var newWin = window.open();
+      newWin.document.open();
+      newWin.document.write(newDoc);
+      newWin.document.close();
+    }
+  </script>
+</body>
+</html>
